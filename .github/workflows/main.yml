@@ -1,13 +1,10 @@
 name: Python app ci/cd
-
 on:
   push:
     branches: ["main"]
-  workflow_dispatch:
-
 jobs:
   run-simulation:
-    run-on: [self-hosted, main_arbor]
+    runs-on: [self-hosted, main_arbor]
     
     steps:
       - name: Checkout repository
