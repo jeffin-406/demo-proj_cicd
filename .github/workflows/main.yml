@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-simulation:
-    run-on: [self-hosted, arbor_main]
+    run-on: [self-hosted, main_arbor]
     
     steps:
       - name: Checkout repository
