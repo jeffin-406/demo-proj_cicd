@@ -17,4 +17,8 @@ jobs:
 
       - name: building docker compose file
         run: |
-           docker compose up -d 
+          docker compose up -d 
+
+      - name: create .env file
+        run: |
+          echo "${{secrets.ENV_FILE}}" > .env
