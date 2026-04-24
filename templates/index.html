@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Monitor Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-8">
+    <div class="max-w-2xl mx-auto">
+        <header class="flex justify-between items-center mb-8 border-b border-gray-700 pb-4">
+            <h1 class="text-3xl font-bold text-blue-400">Task Monitor</h1>
+            <span class="bg-green-900 text-green-300 px-3 py-1 rounded-full text-sm font-mono">Status: Connected</span>
+        </header>
+
+        <form action="/add" method="POST" class="mb-8 flex gap-2">
+            <input type="text" name="task" placeholder="Enter a new task..." required
+                class="flex-1 bg-gray-800 border border-gray-600 rounded-lg px-4 py-2 focus:outline-none focus:border-blue-500">
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg font-bold transition">Add</button>
+        </form>
+
+        <div class="bg-gray-800 rounded-xl shadow-xl overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-gray-700 text-gray-300 text-sm uppercase">
+                    <tr>
+                        <th class="px-6 py-3 text-center w-16">#</th>
+                        <th class="px-6 py-3">Task Description</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-700">
+                    {% for task in tasks %}
+                    <tr class="hover:bg-gray-750 transition">
+                        <td class="px-6 py-4 text-center font-mono text-gray-500">{{ loop.index }}</td>
+                        <td class="px-6 py-4">{{ task.decode('utf-8') }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% if not tasks %}
+                    <tr>
+                        <td colspan="2" class="px-6 py-8 text-center text-gray-500 italic">No tasks found. Add one above!</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
