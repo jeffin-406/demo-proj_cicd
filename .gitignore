@@ -1,0 +1,36 @@
+# --- Secrets & Environment ---
+.env
+.env.local
+.env.*.local
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.venv/
+.env/
+
+# --- Docker ---
+# We usually want to keep the Dockerfile and docker-compose.yml
+# but we ignore local data stored by containers
+.docker/
+# If you use a local folder for Redis/DB data persistence:
+data/
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Distribution / Build ---
+dist/
+build/
+*.egg-info/
