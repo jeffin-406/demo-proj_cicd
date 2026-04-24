@@ -1,1 +1,23 @@
+name: Python app ci/cd
 
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  run-simulation:
+    run-on: [self-hosted, arbor_main]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: stop existing all container
+        run: |
+          docker compose down || true
+          docker system prune -a 
+
+      - name: building docker compose file
+        run: |
+           docker compose up -d 
